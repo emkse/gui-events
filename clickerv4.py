@@ -38,6 +38,8 @@ def Up():
     countLabel.configure(text = count)
     colourChanges("")
     countCheck = "Multiply"
+def UpB(event):
+    Up()    
 
 def Down():
     global count, countCheck
@@ -45,6 +47,8 @@ def Down():
     countLabel.configure(text = count)
     colourChanges("")
     countCheck = "Divide"
+def DownB(event):
+    Down()
 
 
 buttonUp = tk.Button(
@@ -52,12 +56,14 @@ buttonUp = tk.Button(
     command = Up,
     text = "Up"    
 )
-
 buttonDown = tk.Button(
     root,
     command = Down,
     text = "Down"    
 )
+
+def SpaceB(event):
+    XorDivide("")
 
 buttonUp.pack(
 ipadx = 55, 
@@ -78,5 +84,9 @@ buttonDown.pack(
 
 countLabel.bind("<Enter>", backgroundcolorchange)
 countLabel.bind("<Leave>", colourChanges)
-countLabel.bind("<Double-Button>", XorDivide)
+root.bind("<Double-Button>", XorDivide)
+root.bind("<space>", SpaceB)
+root.bind("<Up>", UpB) and root.bind("<+>", UpB)
+root.bind("<Down>", DownB) and root.bind ("-", DownB)
+
 root.mainloop()
